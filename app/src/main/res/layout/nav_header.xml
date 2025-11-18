@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="176dp"
+    android:background="#B71C1C"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <!-- صورة البروفايل في القائمة -->
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/ic_chef_hat"
+        android:background="@android:color/white"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"/>
+    <!-- ملاحظة: لو معندكش ic_chef_hat استخدم أي أيقونة تانية زي @android:drawable/sym_def_app_icon -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome Chef"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Let's cook something delicious"
+        android:textColor="#FFCDD2"
+        android:textSize="14sp"/>
+
+</LinearLayout>

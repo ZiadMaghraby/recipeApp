@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="25dp">
+        <ImageButton
+            android:id="@+id/btnBackShop"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_menu_revert"
+            android:background="@android:color/transparent"
+            android:tint="#B71C1C"
+            android:layout_marginEnd="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shopping List 🛒"
+            android:textSize="26sp"
+            android:textColor="#B71C1C"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <!-- قائمة الطلبات -->
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1 kg Tomato"
+        android:textSize="18sp"
+        android:padding="10dp"/>
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="500g Cheese"
+        android:textSize="18sp"
+        android:padding="10dp"/>
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Milk Pack"
+        android:textSize="18sp"
+        android:padding="10dp"/>
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chicken Breast"
+        android:textSize="18sp"
+        android:padding="10dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="Clear List"
+        android:backgroundTint="#FFCCBC"
+        android:textColor="#D84315"
+        android:layout_marginTop="30dp"/>
+
+</LinearLayout>
