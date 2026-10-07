@@ -10,7 +10,7 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- Header: Back Button + Title -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
                 android:textStyle="bold"/>
         </LinearLayout>
 
-        <!-- اسم الوصفة -->
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
             android:padding="15dp"
             android:layout_marginBottom="15dp"/>
 
-        <!-- المكونات -->
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="120dp"
@@ -55,7 +55,6 @@
             android:padding="15dp"
             android:layout_marginBottom="15dp"/>
 
-        <!-- الخطوات -->
         <EditText
             android:layout_width="match_parent"
             android:layout_height="120dp"
@@ -65,7 +64,7 @@
             android:padding="15dp"
             android:layout_marginBottom="25dp"/>
 
-        <!-- زرار الحفظ -->
+
         <Button
             android:id="@+id/btnSaveRecipe"
             android:layout_width="match_parent"
@@ -74,7 +73,7 @@
             android:backgroundTint="#B71C1C"
             android:textSize="16sp"/>
 
-        <!-- زرار الإلغاء -->
+
         <Button
             android:id="@+id/btnCancelAdd"
             android:layout_width="match_parent"

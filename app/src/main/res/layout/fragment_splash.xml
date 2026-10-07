@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B71C1C"> <!-- أحمر غامق فخم -->
+    android:background="#B71C1C">
 
     <ImageView
         android:id="@+id/imgLogo"
@@ -11,7 +11,7 @@
         android:layout_height="160dp"
         android:src="@drawable/ic_chef_hat"
         android:layout_centerInParent="true"
-        app:tint="@android:color/white"/> <!-- اللوجو أبيض -->
+        app:tint="@android:color/white"/>
 
     <TextView
         android:layout_width="wrap_content"

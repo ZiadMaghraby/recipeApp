@@ -47,7 +47,7 @@
                 android:layout_height="100dp"
                 android:src="@drawable/ic_chef_hat"
                 android:layout_marginBottom="20dp"
-                android:tint="#B71C1C"/>
+                />
 
             <TextView
                 android:layout_width="wrap_content"

@@ -16,7 +16,7 @@
         android:textStyle="bold"
         android:layout_marginBottom="48dp"/>
 
-    <!-- خانة الاسم -->
+
     <EditText
         android:id="@+id/etRegName"
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
         android:paddingEnd="16dp"
         android:layout_marginBottom="16dp"/>
 
-    <!-- خانة الإيميل -->
+
     <EditText
         android:id="@+id/etRegEmail"
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
         android:paddingEnd="16dp"
         android:layout_marginBottom="16dp"/>
 
-    <!-- خانة الباسورد -->
+
     <EditText
         android:id="@+id/etRegPassword"
         android:layout_width="match_parent"
@@ -52,7 +52,7 @@
         android:paddingEnd="16dp"
         android:layout_marginBottom="32dp"/>
 
-    <!-- زرار التسجيل -->
+
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
@@ -63,7 +63,7 @@
         android:backgroundTint="#D32F2F"
         android:textColor="#FFFFFF"/>
 
-    <!-- زرار الرجوع -->
+
     <Button
         android:id="@+id/btnBackToLogin"
         android:layout_width="match_parent"
