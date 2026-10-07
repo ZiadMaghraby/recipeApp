@@ -7,7 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
-import androidx.activity.OnBackPressedCallback; // استيراد جديد
+import androidx.activity.OnBackPressedCallback; // this import for custom back button
 import androidx.fragment.app.Fragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -24,19 +24,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        // --- كود زرار الرجوع الذكي (الجديد) ---
+        // this code make custom back button work in smart way
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                // 1. لو القائمة مفتوحة -> اقفلها
+
+                // if drawer menu is open, we close it
                 if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }
-                // 2. لو فيه صفحات سابقة -> ارجعلها
+
+                // if we have fragments in back stack, we go back to them
                 else if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
                     getSupportFragmentManager().popBackStack();
                 }
-                // 3. غير كدة -> اخرج من التطبيق
+
+                // if no more pages, app will exit
                 else {
                     setEnabled(false);
                     getOnBackPressedDispatcher().onBackPressed();
@@ -44,23 +47,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+        // here we open splash screen only first time
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, new SplashFragment())
                     .commit();
+
             navigationView.setCheckedItem(R.id.nav_home);
         }
     }
 
+    // this method open the drawer from other fragments
     public void openDrawer() {
         drawerLayout.openDrawer(GravityCompat.START);
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
         int id = item.getItemId();
         Fragment selectedFragment = null;
 
+        // here we check which item user click in drawer
         if (id == R.id.nav_home) {
             selectedFragment = new HomeFragment();
         } else if (id == R.id.nav_profile) {
@@ -75,29 +83,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             selectedFragment = new SettingsFragment();
         } else if (id == R.id.nav_about) {
             selectedFragment = new AboutUsFragment();
-        } else if (id == R.id.nav_logout) {
-            // في الخروج مش بنعمل BackStack عشان ميرجعش تاني
+        }
+
+        else if (id == R.id.nav_logout) {
+            // when user logout we remove back stack, so he cant go back
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, new LoginFragment())
                     .commit();
+
             Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show();
 
-            // نمسح تاريخ التصفح
-            getSupportFragmentManager().popBackStack(null, androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            // clear all fragment history
+            getSupportFragmentManager().popBackStack(null,
+                    androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         }
 
+        // this part change screen to the fragment user choose
         if (selectedFragment != null) {
-            // --- التعديل المهم هنا ---
-            // addToBackStack(null): عشان زرار الرجوع يشتغل ويرجعك هنا تاني
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, selectedFragment)
-                    .addToBackStack(null)
+                    .addToBackStack(null) // this make back button work
                     .commit();
         }
 
+        // close drawer after click
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }

@@ -1,11 +1,11 @@
 package com.example.recipeapp;
 
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.Handler; // I need this class for wait some time
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
+import android.view.animation.Animation; // I need this for screen animation
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import androidx.annotation.NonNull;
@@ -17,22 +17,26 @@ public class SplashFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        // I create the view from the XML file (activity_splash.xml).
         View view = inflater.inflate(R.layout.fragment_splash, container, false);
 
+        // I find the logo image view to apply animation on it.
         ImageView logo = view.findViewById(R.id.imgLogo);
 
-        // تشغيل الأنيميشن
-        Animation fadeIn = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in);
-        logo.startAnimation(fadeIn);
+        // I load and start the animation (fade_in animation).
+        Animation fadeIn = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in); // This line load animation file
+        logo.startAnimation(fadeIn); // This line starts the animation on the logo
 
-        // الانتظار 3 ثواني ثم الانتقال
+        // I use Handler for wait 3 seconds before go to next screen.
         new Handler().postDelayed(() -> {
+            // I check if the fragment is still attached to activity before change screen.
             if (isAdded()) {
+                // I replace the splash screen with the Login screen.
                 getParentFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, new LoginFragment())
                         .commit();
             }
-        }, 3000);
+        }, 3000); // Wait for 3000 milliseconds (3 seconds)
 
         return view;
     }
