@@ -2,6 +2,7 @@ package com.example.recipeapp;
 
 import android.os.Bundle;
 import android.os.Handler; // I need this class for wait some time
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class SplashFragment extends Fragment {
+    private final Handler handler = new Handler(Looper.getMainLooper());
+    private final Runnable showLogin = () -> {
+        if (!isResumed() || getView() == null || getParentFragmentManager().isStateSaved()) {
+            return;
+        }
+        getParentFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, new LoginFragment())
+                .commit();
+    };
 
     @Nullable
     @Override
@@ -27,17 +37,25 @@ public class SplashFragment extends Fragment {
         Animation fadeIn = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in); // This line load animation file
         logo.startAnimation(fadeIn); // This line starts the animation on the logo
 
-        // I use Handler for wait 3 seconds before go to next screen.
-        new Handler().postDelayed(() -> {
-            // I check if the fragment is still attached to activity before change screen.
-            if (isAdded()) {
-                // I replace the splash screen with the Login screen.
-                getParentFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new LoginFragment())
-                        .commit();
-            }
-        }, 3000); // Wait for 3000 milliseconds (3 seconds)
-
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        handler.removeCallbacks(showLogin);
+        handler.postDelayed(showLogin, 3000);
+    }
+
+    @Override
+    public void onPause() {
+        handler.removeCallbacks(showLogin);
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroyView() {
+        handler.removeCallbacks(showLogin);
+        super.onDestroyView();
     }
 }
