@@ -32,11 +32,12 @@ public class DetailsFragment extends Fragment {
 
         // I try to get data that was sent to me from previous screen
         Bundle args = getArguments();
+        currentRecipeName = "";
         if (args != null) {
             // I read the recipe name from the bundle
-            currentRecipeName = args.getString("RECIPE_NAME");
+            currentRecipeName = args.getString("RECIPE_NAME", "");
 
-            if(currentRecipeName != null) {
+            if(!currentRecipeName.isEmpty()) {
                 tvName.setText(currentRecipeName);
                 updateFabIcon(); // I call this function for show heart is full or empty
 
